@@ -14,7 +14,7 @@
 
     <PackageType>DotnetCliTool</PackageType>
 
-    <Version>0.1.0.1</Version>
+    <Version>0.1.0.2</Version>
 
     <Copyright>Patrik Pfaffenbauer | p3root | p3-software</Copyright>
     <PackAsTool>true</PackAsTool>
