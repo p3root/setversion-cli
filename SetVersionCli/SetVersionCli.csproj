@@ -19,6 +19,8 @@
     <Copyright>Patrik Pfaffenbauer | p3root | p3-software</Copyright>
     <PackAsTool>true</PackAsTool>
     <LangVersion>7.3</LangVersion>
+    <PackageProjectUrl>https://github.com/p3root/setversion-cli</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/p3root/setversion-cli</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
