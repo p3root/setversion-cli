@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SetVersionCli": {
+      "commandName": "Project",
+      "commandLineArgs": "0.5"
+    }
+  }
+}
