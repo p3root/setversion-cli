@@ -2,36 +2,52 @@
 using System.IO;
 using System.Linq;
 using System.Xml;
+using PowerArgs;
 
 namespace SetVersionCli
 {
+    public class SetVersionParams
+    {
+        [ArgRequired(PromptIfMissing = true)]
+        [ArgShortcut("v")]
+        [ArgPosition(0)]
+        public string Version { get; set; }
+
+        [ArgShortcut("d")]
+        [ArgPosition(1)] 
+        public string WorkingDirectory { get; set; } = Environment.CurrentDirectory;
+        
+        [ArgShortcut("cs")]
+        [ArgPosition(2)]
+        [ArgDefaultValue(true)]
+        public bool UpdateCsProjFiles { get; set; }
+
+        [ArgShortcut("nu")]
+        [ArgPosition(3)]
+        [ArgDefaultValue(true)]
+        public bool UpdateNuSpecFiles { get; set; }
+    }
+
     class Program
     {
+        
         static void Main(string[] args)
         {
-            if(args.Length < 1)
-            {
-                Console.WriteLine($"Invalid params");
-                return;
-            }
+            var parsed = Args.Parse<SetVersionParams>(args);
 
-
-            string workingDir = Environment.CurrentDirectory;
-
-            if (args.Length >= 2) {
-                workingDir = args[1];
-            }
-
-            SetVersion(Version.Parse(args[0]), workingDir);
+            SetVersion(parsed);
         }
 
 
-        internal static int SetVersion(Version version, string workingDirectory)
+        internal static int SetVersion(SetVersionParams args)
         {
+            var version = Version.Parse(args.Version);
+            var workingDirectory = args.WorkingDirectory;
+
             Console.WriteLine($"Set assembly version to {version} in {workingDirectory}");
             DirectoryIterator.IterateProjectFiles(workingDirectory, (file, document, project) =>
             {
-                if (file.EndsWith("csproj"))
+                if (file.EndsWith("csproj") && args.UpdateCsProjFiles)
                 {
                     var props = project.FirstChild;
 
@@ -55,7 +71,7 @@ namespace SetVersionCli
                         props.AppendChild(node);
                     }
                 }
-                else if (file.EndsWith("nuspec"))
+                else if (file.EndsWith("nuspec") && args.UpdateNuSpecFiles)
                 {
                     var props = project.FirstChild;
 
