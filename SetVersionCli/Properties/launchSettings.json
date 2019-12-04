@@ -2,7 +2,8 @@
   "profiles": {
     "SetVersionCli": {
       "commandName": "Project",
-      "commandLineArgs": "0.5"
+      "commandLineArgs": "0.5",
+      "workingDirectory": "C:\\dev\\rc-tec\\rc-xamarin"
     }
   }
 }

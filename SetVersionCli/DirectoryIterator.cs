@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Xml;
 
 namespace SetVersionCli
@@ -22,7 +23,8 @@ namespace SetVersionCli
 
         internal static void IterateFiles(string dir, Action<string, XmlDocument, XmlNode> action)
         {
-            var files = Directory.GetFiles(dir, "*.csproj");
+            var files = Directory.GetFiles(dir, "*.csproj").ToList();
+            files.AddRange(Directory.GetFiles(dir, "*.nuspec"));
 
             foreach (var file in files)
             {
