@@ -2,23 +2,23 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net70</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
 
     <AssemblyName>setversion-cli</AssemblyName>
 
 
     <PackageId>setversion-cli</PackageId>
-    <PackageVersion>7.0.0.0</PackageVersion>
+    <PackageVersion>8.0.0.0</PackageVersion>
     <Authors>Patrik Pfaffenbauer | p3root | p3-software</Authors>
     <Description>Tool for setting the version property in *.csproj files</Description>
 
     <PackageType>DotnetCliTool</PackageType>
 
-    <Version>7.0.0.0</Version>
+    <Version>8.0.0.0</Version>
 
     <Copyright>Patrik Pfaffenbauer | p3root | p3-software</Copyright>
     <PackAsTool>true</PackAsTool>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>8</LangVersion>
     <PackageProjectUrl>https://github.com/p3root/setversion-cli</PackageProjectUrl>
     <RepositoryUrl>https://github.com/p3root/setversion-cli</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
