@@ -25,6 +25,7 @@ namespace SetVersionCli
         {
             var files = Directory.GetFiles(dir, "*.csproj").ToList();
             files.AddRange(Directory.GetFiles(dir, "*.nuspec"));
+            files.AddRange(Directory.GetFiles(dir, "*.Build.props"));
 
             foreach (var file in files)
             {

@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Xml;
+using NuGet.Versioning;
 using PowerArgs;
 
 namespace SetVersionCli
@@ -26,6 +27,11 @@ namespace SetVersionCli
         [ArgPosition(3)]
         [ArgDefaultValue(true)]
         public bool UpdateNuSpecFiles { get; set; }
+        
+        [ArgShortcut("bp")]
+        [ArgPosition(4)]
+        [ArgDefaultValue(true)]
+        public bool UpdateBuildPropFiles { get; set; }
     }
 
     class Program
@@ -41,7 +47,7 @@ namespace SetVersionCli
 
         internal static int SetVersion(SetVersionParams args)
         {
-            var version = Version.Parse(args.Version);
+            var version = SemanticVersion.Parse(args.Version);
             var workingDirectory = args.WorkingDirectory;
 
             Console.WriteLine($"Set assembly version to {version} in {workingDirectory}");
@@ -59,6 +65,23 @@ namespace SetVersionCli
                         packageVerson[0].InnerText = version.ToString();
                     }
 
+                    if (versionProp.Count == 1)
+                    {
+                        versionProp[0].InnerText = version.ToString();
+                    }
+                    else
+                    {
+                        var node = document.CreateNode(XmlNodeType.Element, "Version", null);
+                        node.InnerText = version.ToString();
+
+                        props.AppendChild(node);
+                    }
+                }
+                else if (file.EndsWith("Build.props") && args.UpdateBuildPropFiles)
+                {
+                    var props = project.FirstChild;
+
+                    var versionProp = props.SelectNodes("Version");
                     if (versionProp.Count == 1)
                     {
                         versionProp[0].InnerText = version.ToString();

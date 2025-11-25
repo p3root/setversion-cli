@@ -3,7 +3,7 @@
     "SetVersionCli": {
       "commandName": "Project",
       "commandLineArgs": "0.5 -cs false",
-      "workingDirectory": "C:\\dev\\rc-tec\\rc-xamarin"
+      "workingDirectory": "C:\\dev\\amv\\amv-autologg-connected\\src\\Autologg.Connected.Mercedes.Kafka"
     }
   }
 }
