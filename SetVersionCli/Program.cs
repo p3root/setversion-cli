@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Xml;
 using NuGet.Versioning;
 using PowerArgs;
@@ -56,6 +57,11 @@ namespace SetVersionCli
                 if (file.EndsWith("csproj") && args.UpdateCsProjFiles)
                 {
                     var props = project.FirstChild;
+
+                    if (props.Name == "#comment")
+                    {
+                        props = project.ChildNodes[1];
+                    }
 
                     var versionProp = props.SelectNodes("Version");
                     var packageVerson = props.SelectNodes("PackageVersion");

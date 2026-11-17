@@ -2,17 +2,17 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net10.0</TargetFrameworks>
+    <TargetFrameworks>net11.0</TargetFrameworks>
 
     <AssemblyName>setversion-cli</AssemblyName>
 
 
     <PackageId>setversion-cli</PackageId>
-    <PackageVersion>10.0.0.0</PackageVersion>
+    <PackageVersion>11.0.0.0</PackageVersion>
     <Authors>Patrik Pfaffenbauer | p3root | p3-software</Authors>
     <Description>Tool for setting the version property in *.csproj files</Description>
 
-    <Version>10.0.0.0</Version>
+    <Version>11.0.0.0</Version>
 
     <Copyright>Patrik Pfaffenbauer | p3root | p3-software</Copyright>
     <PackAsTool>true</PackAsTool>
@@ -23,7 +23,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NuGet.Versioning" Version="7.0.1" />
+    <PackageReference Include="NuGet.Versioning" Version="8.0.0" />
     <PackageReference Include="PowerArgs" Version="4.0.3" />
   </ItemGroup>
 
